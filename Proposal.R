@@ -5,6 +5,11 @@ for(i in 1:3){
   datasforstudy<-datasforstudy[which(!is.na(datasforstudy[, i])), ]
 }
 
+##Summary
+summary(datasforstudy)
+cbind(summary(datasforstudy$coninc[datasforstudy$born=="Yes"]), 
+      summary(datasforstudy$coninc[datasforstudy$born=="No"]))
+
 ##Plots
 par(mfrow=c(1,2))
 with(data = datasforstudy, boxplot(coninc~born, 
@@ -12,7 +17,3 @@ with(data = datasforstudy, boxplot(coninc~born,
                                    xlab = "Born in US",
                                    ylab = "Total family income in constant dollars"))
 with(data = datasforstudy, mosaicplot(born~degree, main = "Born in US and RS highest degree"))
-
-##Summary
-summary(datasforstudy)
-
